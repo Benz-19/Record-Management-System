@@ -10,6 +10,7 @@
          --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
      }
 
+
      body {
          font-family: 'Roboto', sans-serif;
          margin: 0;
@@ -18,43 +19,6 @@
          background-color: var(--bg-color);
          color: var(--text-color);
          line-height: 1.6;
-     }
-
-     .container {
-         max-width: 1200px;
-         margin: 0 auto;
-         padding: 0 20px;
-     }
-
-     header {
-         background-color: var(--card-bg);
-         padding: 20px 0;
-         box-shadow: var(--shadow);
-     }
-
-     nav {
-         display: flex;
-         justify-content: space-between;
-         align-items: center;
-     }
-
-     .logo {
-         font-size: 1.8em;
-         font-weight: 700;
-         color: var(--primary-color);
-         text-decoration: none;
-     }
-
-     .nav-links a {
-         color: var(--text-color);
-         text-decoration: none;
-         margin-left: 25px;
-         font-weight: 400;
-         transition: color 0.3s ease;
-     }
-
-     .nav-links a:hover {
-         color: var(--primary-color);
      }
 
      .hero {

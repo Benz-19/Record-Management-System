@@ -7,7 +7,8 @@
     <title>Library Record Management System - Organize Your Collection</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="/record%20management%20system/public/css/landing.css">
+    <link rel="stylesheet" href="/record_management_system/public/css/landing.css">
+    <link rel="stylesheet" href="/record_management_system/public/css/layout.css">
 </head>
 
 <body>

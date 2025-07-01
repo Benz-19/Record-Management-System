@@ -1,0 +1,86 @@
+     :root {
+         --primary-color: #728FCE;
+         /* A nice blue */
+         --secondary-color: #A9CCE3;
+         /* Lighter blue */
+         --text-color: #333;
+         --light-text-color: #666;
+         --bg-color: #f4f7f6;
+         --card-bg: #fff;
+         --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+     }
+
+     body {
+         font-family: 'Roboto', sans-serif;
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+         background-color: var(--bg-color);
+         color: var(--text-color);
+         line-height: 1.6;
+     }
+
+     .container {
+         max-width: 1200px;
+         margin: 0 auto;
+         padding: 0 20px;
+     }
+
+     header {
+         background-color: var(--card-bg);
+         padding: 20px 0;
+         box-shadow: var(--shadow);
+     }
+
+     nav {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+     }
+
+     .logo {
+         font-size: 1.8em;
+         font-weight: 700;
+         color: var(--primary-color);
+         text-decoration: none;
+     }
+
+     .nav-links a {
+         color: var(--text-color);
+         text-decoration: none;
+         margin-left: 25px;
+         font-weight: 400;
+         transition: color 0.3s ease;
+     }
+
+     .nav-links a:hover {
+         color: var(--primary-color);
+     }
+
+     /* Footer */
+     footer {
+         background-color: var(--text-color);
+         color: white;
+         text-align: center;
+         padding: 40px 0;
+         margin-top: 50px;
+     }
+
+     footer p {
+         margin: 0;
+         font-size: 0.9em;
+         opacity: 0.8;
+     }
+
+
+     @media (max-width: 992px) {
+         .nav-links {
+             display: none;
+             /* Hide navigation links on smaller screens for simplicity */
+         }
+
+         header nav {
+             justify-content: center;
+             /* Center logo when links are hidden */
+         }
+     }
