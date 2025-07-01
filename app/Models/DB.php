@@ -10,7 +10,7 @@ use PDOException;
 class DB
 {
 
-    private $db;
+    private $conn;
 
     public function __construct()
     {
@@ -24,7 +24,7 @@ class DB
                 PDO::ATTR_EMULATE_PREPARES => false
             ];
 
-            $this->db = new PDO($dsn, $config['db_username'], $config['db_password'], $options);
+            $this->conn = new PDO($dsn, $config['db_username'], $config['db_password'], $options);
         } catch (PDOException $error) {
             error_log('Database connection error. ErrorType: ' . $error->getMessage());
         } catch (Exception $error) {
@@ -35,6 +35,64 @@ class DB
 
     public function connection()
     {
-        return $this->db;
+        if (!isset($this->conn)) {
+            $db = new DB();
+            $this->conn = $db;
+            return $this->conn;
+        }
+        return $this->conn;
+    }
+
+    /**
+     * executes all SQL queries such as SELECT,UPDATE, DELETE
+     * @param string $query stores the SQL query to be execured
+     * @param array $params is an associative array for the prepared statement
+     */
+
+    public function execute(string $query, $params = [])
+    {
+
+        // Verify connection
+        if (!$this->connection()) {
+            throw new PDOException("Database exception failed to execute this query.");
+        }
+        $stmt = $this->connection()->prepare($query);
+        return $stmt->execute($params);
+    }
+
+    /**
+     * fetchSingleData obtains a single data using the SELECT stmt
+     * @param string $query stores the SQL query to be execured
+     * @param array $params is an associative array for the prepared statement
+     */
+
+    public function fetchSingleData(string $query, $params = [])
+    {
+        if (!$this->connection()) {
+            throw new PDOException("Database connection not established, failed to retrieve single data.");
+        }
+
+        $stmt = $this->connection()->prepare($query);
+        $stmt->execute($params);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result ?: null;
+    }
+
+    /**
+     * fetchAllData obtains all data using the SELECT stmt
+     * @param string $query stores the SQL query to be execured
+     * @param array $params is an associative array for the prepared statement
+     */
+
+    public function fetchAllData(string $query, $params = [])
+    {
+        if (!$this->connection()) {
+            throw new PDOException("Database connection not established, failed to retrieve ALL data.");
+        }
+
+        $stmt = $this->connection()->prepare($query);
+        $stmt->execute($params);
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result ?: null;
     }
 }

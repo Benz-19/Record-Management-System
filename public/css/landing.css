@@ -1,0 +1,283 @@
+     :root {
+         --primary-color: #728FCE;
+         /* A nice blue */
+         --secondary-color: #A9CCE3;
+         /* Lighter blue */
+         --text-color: #333;
+         --light-text-color: #666;
+         --bg-color: #f4f7f6;
+         --card-bg: #fff;
+         --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+     }
+
+     body {
+         font-family: 'Roboto', sans-serif;
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+         background-color: var(--bg-color);
+         color: var(--text-color);
+         line-height: 1.6;
+     }
+
+     .container {
+         max-width: 1200px;
+         margin: 0 auto;
+         padding: 0 20px;
+     }
+
+     header {
+         background-color: var(--card-bg);
+         padding: 20px 0;
+         box-shadow: var(--shadow);
+     }
+
+     nav {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+     }
+
+     .logo {
+         font-size: 1.8em;
+         font-weight: 700;
+         color: var(--primary-color);
+         text-decoration: none;
+     }
+
+     .nav-links a {
+         color: var(--text-color);
+         text-decoration: none;
+         margin-left: 25px;
+         font-weight: 400;
+         transition: color 0.3s ease;
+     }
+
+     .nav-links a:hover {
+         color: var(--primary-color);
+     }
+
+     .hero {
+         background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+         color: white;
+         padding: 80px 0;
+         text-align: center;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         flex-wrap: wrap-reverse;
+         /* Puts text first on small screens */
+         gap: 40px;
+     }
+
+     .hero-content {
+         max-width: 600px;
+         text-align: left;
+         padding: 20px;
+     }
+
+     .hero-content h1 {
+         font-size: 3.5em;
+         margin-bottom: 20px;
+         line-height: 1.1;
+     }
+
+     .hero-content p {
+         font-size: 1.3em;
+         margin-bottom: 30px;
+         opacity: 0.9;
+     }
+
+     .cta-button {
+         background-color: #FFD700;
+         /* Gold-like color for contrast */
+         color: var(--text-color);
+         padding: 15px 30px;
+         border-radius: 5px;
+         text-decoration: none;
+         font-size: 1.1em;
+         font-weight: 700;
+         transition: background-color 0.3s ease, transform 0.2s ease;
+         display: inline-block;
+     }
+
+     .cta-button:hover {
+         background-color: #e6c200;
+         transform: translateY(-3px);
+     }
+
+     .hero-image svg {
+         width: 100%;
+         max-width: 500px;
+         height: auto;
+         display: block;
+     }
+
+     .books-section {
+         padding: 80px 0;
+         text-align: center;
+         background-color: var(--bg-color);
+     }
+
+     .books-section h2 {
+         font-size: 2.8em;
+         margin-bottom: 20px;
+         color: var(--primary-color);
+     }
+
+     .books-section p.subtitle {
+         font-size: 1.2em;
+         color: var(--light-text-color);
+         margin-bottom: 60px;
+         max-width: 800px;
+         margin-left: auto;
+         margin-right: auto;
+     }
+
+     .card-container {
+         display: grid;
+         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+         gap: 30px;
+     }
+
+     .book-card {
+         background-color: var(--card-bg);
+         padding: 25px;
+         border-radius: 10px;
+         box-shadow: var(--shadow);
+         text-align: left;
+         transition: transform 0.3s ease, box-shadow 0.3s ease;
+         display: flex;
+         flex-direction: column;
+         justify-content: space-between;
+         min-height: 250px;
+         /* Ensure cards have a consistent minimum height */
+     }
+
+     .book-card:hover {
+         transform: translateY(-10px);
+         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+     }
+
+     .book-card h3 {
+         font-size: 1.5em;
+         margin-top: 10px;
+         margin-bottom: 10px;
+         color: var(--text-color);
+         line-height: 1.3;
+     }
+
+     .book-card p {
+         color: var(--light-text-color);
+         font-size: 0.95em;
+         margin-bottom: 8px;
+     }
+
+     .book-card .author {
+         font-style: italic;
+         color: var(--primary-color);
+     }
+
+     .book-card .isbn {
+         font-size: 0.85em;
+         opacity: 0.7;
+     }
+
+     .book-card .availability {
+         margin-top: 15px;
+         font-weight: 700;
+         color: green;
+     }
+
+     .book-card .availability.unavailable {
+         color: orange;
+     }
+
+
+     footer {
+         background-color: var(--text-color);
+         color: white;
+         text-align: center;
+         padding: 40px 0;
+         margin-top: 50px;
+     }
+
+     footer p {
+         margin: 0;
+         font-size: 0.9em;
+         opacity: 0.8;
+     }
+
+     /* Responsive Design */
+     @media (max-width: 992px) {
+         .hero-content h1 {
+             font-size: 2.8em;
+         }
+
+         .hero-content p {
+             font-size: 1.1em;
+         }
+
+         .hero {
+             padding: 60px 0;
+             flex-direction: column;
+         }
+
+         .hero-content {
+             text-align: center;
+             max-width: none;
+         }
+
+         .hero-image svg {
+             max-width: 400px;
+         }
+
+         .books-section h2 {
+             font-size: 2.2em;
+         }
+
+         .books-section p.subtitle {
+             font-size: 1em;
+         }
+
+         .card-container {
+             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+         }
+
+         .nav-links {
+             display: none;
+             /* Hide navigation links on smaller screens for simplicity */
+         }
+
+         header nav {
+             justify-content: center;
+             /* Center logo when links are hidden */
+         }
+     }
+
+     @media (max-width: 576px) {
+         .hero-content h1 {
+             font-size: 2.2em;
+         }
+
+         .hero-content p {
+             font-size: 1em;
+         }
+
+         .cta-button {
+             padding: 12px 25px;
+             font-size: 1em;
+         }
+
+         .books-section {
+             padding: 50px 0;
+         }
+
+         .books-section h2 {
+             font-size: 1.8em;
+         }
+
+         .book-card {
+             padding: 20px;
+         }
+     }
