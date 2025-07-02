@@ -34,6 +34,6 @@ class PagesController
     public static function renderClientDashboard()
     {
         $controller = new BaseController();
-        $controller->renderView('/admin/dashboard');
+        $controller->renderView('/client/dashboard');
     }
 }

@@ -59,15 +59,50 @@ class AuthController
     {
         if (!isset($_POST['registerBtn'])) {
             $_SESSION['error'] = 'Something went wrong...';
-            header('Location: /record_management_system/login');
+            header('Location: /record_management_system/landing');
             exit;
         }
 
         if (!isset($_POST['username']) || !isset($_POST['email']) || !isset($_POST['password'])) {
             $_SESSION['error'] = 'Ensure all fields are filled...';
-            header('Location: /record_management_system/login');
+            header('Location: /record_management_system/register');
             exit;
         } else {
+            // Check if user exists
+            $email = (string)strtolower(htmlspecialchars(trim($_POST['email'])));
+            $username = (string)strtolower(htmlspecialchars(trim($_POST['username'])));
+            $password = (string)strtolower(htmlspecialchars(trim($_POST['password'])));
+
+            $user_credentials = (new User)->getUserCredentials($email); //is exists in the database
+
+            if (!empty($user_credentials) || $user_credentials !== null) {
+                $_SESSION['error'] = 'User Already Exists...';
+                header('Location: /record_management_system/register');
+                exit;
+            } else {
+
+                // Create a nse user
+                $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+                $user_type = 'client'; //default
+                $new_user = [
+                    'username' => $username,
+                    'email' => $email,
+                    'password' => $hashed_password,
+                    'user_type' => $user_type
+                ];
+
+                $result = (new User)->createUser($new_user);
+
+                if ($result) {
+                    $_SESSION['success'] = 'Account Created Successfully...';
+                    header('Location: /record_management_system/register');
+                    exit;
+                } else {
+                    $_SESSION['error'] = 'Failed to create account...';
+                    header('Location: /record_management_system/register');
+                    exit;
+                }
+            }
         }
     }
 }

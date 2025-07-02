@@ -84,3 +84,21 @@
              /* Center logo when links are hidden */
          }
      }
+
+     /* Messages */
+     .message {
+         display: none;
+         max-width: 252px;
+         box-shadow: 1px 1px 1px gray;
+         margin: 0 60px;
+     }
+
+     .message .error {
+         color: red;
+         text-align: center;
+     }
+
+     .message .success {
+         color: green;
+         text-align: center;
+     }

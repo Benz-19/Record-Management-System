@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Exception;
 use PDOException;
 use App\Models\DB;
 
@@ -19,7 +20,7 @@ class User
         $db = new DB();
 
         try {
-            $user_credentials = self::getUserCredentials($email);
+            $user_credentials = $this->getUserCredentials($email);
 
             if (empty($user_credentials) || $user_credentials === null) {
                 $_SESSION['error'] = 'User does not exists!!!';
@@ -53,8 +54,34 @@ class User
         } catch (PDOException $error) {
             error_log('Failed to get user credentials user. ErrorType: ' . $error->getMessage());
             return null;
+        } catch (Exception $error) {
+            error_log('Something went wrong at User::getUserCredentials. ErrorType: ' . $error->getMessage());
+            return null;
         }
 
         return null;
+    }
+
+    public function createUser($new_user = [])
+    {
+        $db = new DB();
+
+        try {
+            $query = "INSERT INTO users(username, email, password, user_type) VALUES (:user, :email, :pass, :utype)";
+            $params = [
+                ':user' => $new_user['username'],
+                ':pass' => $new_user['password'],
+                ':email' => $new_user['email'],
+                ':utype' => $new_user['user_type']
+            ];
+            $result = $db->execute($query, $params);
+            return $result ?: false;
+        } catch (PDOException $error) {
+            error_log('Failed to get user credentials user. ErrorType: ' . $error->getMessage());
+            return false;
+        } catch (Exception $error) {
+            error_log('Something went wrong at User::createUser. ErrorType: ' . $error->getMessage());
+            return false;
+        }
     }
 }

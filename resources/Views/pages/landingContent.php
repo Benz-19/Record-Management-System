@@ -1,14 +1,4 @@
   <main>
-      <?php
-
-        use App\Models\User;
-
-        $user = new User;
-        $result = $user->isUser('admin@gmail.com', 55555);
-        echo '<pre>';
-        print_r($result);
-        echo '</pre>';
-        ?>
       <section class="hero">
           <div class="hero-content">
               <h1>Manage Your Library Collection with Ease.</h1>

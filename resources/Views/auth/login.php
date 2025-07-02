@@ -94,6 +94,8 @@
             max-width: 400px;
             /* Max width for the login form */
             text-align: center;
+            display: flex;
+            flex-direction: column;
         }
 
         .login-card h2 {
@@ -183,6 +185,8 @@
     <!-- FOOTER -->
     <?php require __DIR__ . '/../layouts/footer.php'; ?>
 
+    <!-- JS -->
+    <script src="/record_management_system/public/js/layout.js"></script>
 </body>
 
 </html>

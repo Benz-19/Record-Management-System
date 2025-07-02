@@ -2,6 +2,15 @@
      <div class="login-card">
          <h2>Welcome Back!</h2>
          <form action="/record_management_system/login" method="POST">
+             <div class="message">
+                 <?php if (isset($_SESSION['error'])): ?>
+                     <p class="error"><?php echo $_SESSION['error']; ?></p>
+                     <?php unset($_SESSION['error']); ?>
+                 <?php elseif (isset($_SESSION['success'])): ?>
+                     <p class="success"><?php echo $_SESSION['success']; ?></p>
+                     <?php unset($_SESSION['success']); ?>
+                 <?php endif; ?>
+             </div>
              <div class="form-group">
                  <label for="email">Email Address</label>
                  <input type="email" id="email" name="email" placeholder="your.email@example.com" required>

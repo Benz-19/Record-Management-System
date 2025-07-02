@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <h1>The admin says hello</h1>
+    <h1>Welcome client</h1>
 </body>
 
 </html>
