@@ -43,6 +43,11 @@ class DB
         return $this->conn;
     }
 
+    public function closeConnection()
+    {
+        $this->conn = null;
+    }
+
     /**
      * executes all SQL queries such as SELECT,UPDATE, DELETE
      * @param string $query stores the SQL query to be execured
@@ -53,10 +58,10 @@ class DB
     {
 
         // Verify connection
-        if (!$this->connection()) {
+        if (!$this->conn) {
             throw new PDOException("Database exception failed to execute this query.");
         }
-        $stmt = $this->connection()->prepare($query);
+        $stmt = $this->conn->prepare($query);
         return $stmt->execute($params);
     }
 
@@ -68,11 +73,11 @@ class DB
 
     public function fetchSingleData(string $query, $params = [])
     {
-        if (!$this->connection()) {
+        if (!$this->conn) {
             throw new PDOException("Database connection not established, failed to retrieve single data.");
         }
 
-        $stmt = $this->connection()->prepare($query);
+        $stmt = $this->conn->prepare($query);
         $stmt->execute($params);
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         return $result ?: null;
@@ -86,11 +91,11 @@ class DB
 
     public function fetchAllData(string $query, $params = [])
     {
-        if (!$this->connection()) {
+        if (!$this->conn) {
             throw new PDOException("Database connection not established, failed to retrieve ALL data.");
         }
 
-        $stmt = $this->connection()->prepare($query);
+        $stmt = $this->conn->prepare($query);
         $stmt->execute($params);
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result ?: null;
