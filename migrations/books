@@ -1,0 +1,28 @@
+---books table
+drop table if exists books;
+create table books (
+    id int not null auto_increment primary key,
+    title varchar(100) not null,
+    author varchar(100) not null,
+    published_year int,
+    genre varchar(50),
+    total_copies int not null default 1,
+    available_copies int not null default 1,
+    created_at timestamp default current_timestamp,
+    updated_at timestamp default current_timestamp on update current_timestamp
+);
+
+insert into books (title, author, published_year, genre, total_copies, available_copies) values
+('Introduction to Algorithms', 'Thomas H. Cormen', 2009, 'Computer Science', 5, 3);
+
+insert into books (title, author, published_year, genre, total_copies, available_copies) values
+('Clean Code', 'Robert C. Martin', 2008, 'Programming', 4, 2);
+
+insert into books (title, author, published_year, genre, total_copies, available_copies) values
+('Artificial Intelligence: A Modern Approach', 'Stuart Russell', 2010, 'AI', 3, 1);
+
+insert into books (title, author, published_year, genre, total_copies, available_copies) values
+('Design Patterns', 'Erich Gamma', 1994, 'Software Engineering', 2, 2);
+
+insert into books (title, author, published_year, genre, total_copies, available_copies) values
+('Computer Networks', 'Andrew S. Tanenbaum', 2011, 'Networking', 6, 5);

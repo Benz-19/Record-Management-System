@@ -33,7 +33,10 @@ class PagesController
 
     public static function renderClientDashboard()
     {
-        $controller = new BaseController();
-        $controller->renderView('/client/dashboard');
+
+
+        require __DIR__ . '/../../../resources/Views/client/dashboard.php';
+        // $controller = new BaseController();
+        // $controller->renderView('/client/dashboard');
     }
 }
