@@ -34,7 +34,13 @@ class PagesController
     public static function renderClientDashboard()
     {
 
-
+        $bookController = new BookController();
+        $books_data = $bookController->retrieveAllBooksData();
+        $books = $books_data['books'];
+        $counter = $books_data['counter'];
+        $number_of_books = $books_data['number_of_books'];
+        $borrowed_books = $books_data['borrowed_books'];
+        $borrowed_books_ids = $books_data['borrowed_books_ids'];
         require __DIR__ . '/../../../resources/Views/client/dashboard.php';
         // $controller = new BaseController();
         // $controller->renderView('/client/dashboard');

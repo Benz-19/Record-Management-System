@@ -1,14 +1,7 @@
 <?php
-$books = [
-    ['id' => 1, 'title' => 'Maths', 'author' => 'Kingsley', 'is_rented' => 'yes'],
-    ['id' => 2, 'title' => 'English', 'author' => 'Ade', 'is_rented' => 'no']
-];
-
-$rented = 0;
-foreach ($books as $book) {
-    if ($book['is_rented'] === 'yes')
-        $rented++;
-}
+// echo '<pre>';
+// print_r($borrowed_books[0]['is_returned']);
+// echo '</pre>';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -135,17 +128,17 @@ foreach ($books as $book) {
             </thead>
             <tbody>
                 <?php foreach ($books as $book): ?>
-                    <?php if ($book['is_rented'] !== 'yes'): ?>
-                        <tr>
-                            <td><?= htmlspecialchars($book['title']) ?></td>
-                            <td><?= htmlspecialchars($book['author']) ?></td>
-                            <td>
-                                <form method="POST" action="/client/rent/<?= $book['id'] ?>" class="inline">
-                                    <button type="submit" class="btn btn-rent"><i class="fas fa-book-reader icon"></i>Rent</button>
-                                </form>
-                            </td>
-                        </tr>
-                    <?php endif; ?>
+                    <!-- <?php if ($book['is_rented'] !== 'yes'): ?> -->
+                    <tr>
+                        <td><?= htmlspecialchars($book['title']) ?></td>
+                        <td><?= htmlspecialchars($book['author']) ?></td>
+                        <td>
+                            <form method="POST" action="/client/rent/<?= $book['id'] ?>" class="inline">
+                                <button type="submit" class="btn btn-rent"><i class="fas fa-book-reader icon"></i>Rent</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <!-- <?php endif; ?> -->
                 <?php endforeach; ?>
             </tbody>
         </table>
@@ -163,16 +156,17 @@ foreach ($books as $book) {
                 </tr>
             </thead>
             <tbody>
-                <?php if ($rented === 0): ?>
+                <!-- <?php if ($rented === 0): ?>
                     <tr>
                         <td>
                             <?php echo "You haven't rented any books yet.";
                             ?>
                         </td>
                     </tr>
-                <?php else: ?>
-                    <?php foreach ($books as $book): ?>
-                        <?php if ($book['is_rented'] === 'yes'): ?>
+                <?php else: ?> -->
+                <?php foreach ($books as $book): ?>
+                    <?php foreach ($borrowed_books as $borrowed_book): ?>
+                        <?php if (array_search($book['id'], $borrowed_books_ids) && ($borrowed_book['is_returned'] === 0) && ($borrowed_book['user_id'] === 2)): ?>
                             <tr>
                                 <td><?= htmlspecialchars($book['title']) ?></td>
                                 <td><?= htmlspecialchars($book['author']) ?></td>
@@ -184,7 +178,8 @@ foreach ($books as $book) {
                             </tr>
                         <?php endif; ?>
                     <?php endforeach; ?>
-                <?php endif; ?>
+                <?php endforeach; ?>
+                <!-- <?php endif; ?> -->
             </tbody>
         </table>
     </div>

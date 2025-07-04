@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use App\Models\DB;
+use Exception;
 use PDOException;
+use App\Models\DB;
 
 class Books extends DB
 {
@@ -51,7 +52,7 @@ class Books extends DB
      * @param int $id is the id of the book
      * @return array|null The book data as an associative array, or null if not found.
      */
-    public function getBookById(int $id)
+    public function getBookById(int $id): ?array
     {
         $query = "SELECT * FROM books WHERE id=:id LIMIT 1";
         $params = [':id' => $id];
@@ -67,10 +68,34 @@ class Books extends DB
      *
      * @return array|null All the book data as an associative array, or null if not found.
      */
-    public function getAllBooks()
+    public function getAllBooks(): ?array
     {
-        $query = "SELECT * FROM books ORDER BY created_at DESC";
-        $singleBook =  $this->fetchSingleData($query);
-        return $singleBook;
+        try {
+            $query = "SELECT * FROM books ORDER BY created_at DESC";
+            $singleBook =  $this->fetchAllData($query);
+            return $singleBook;
+        } catch (PDOException $error) {
+            error_log("Execution Failure: Database error retrieving all books in Books::getAllBooks. ErrorType: " . $error->getMessage());
+            return null;
+        } catch (Exception $error) {
+            error_log("Something went wrong: An unexpected error occurred in Books::getAllBooks. ErrorType: " . $error->getMessage());
+            return null;
+        }
+    }
+
+
+    public function getAllBorrowedBooks(): ?array
+    {
+        try {
+            $query = "SELECT * FROM borrowed_books ORDER BY borrow_date DESC";
+            $borrowedBook =  $this->fetchAllData($query);
+            return $borrowedBook;
+        } catch (PDOException $error) {
+            error_log("Execution Failure: Database error retrieving all books in Books::getAllBorrowedBooks. ErrorType: " . $error->getMessage());
+            return null;
+        } catch (Exception $error) {
+            error_log("Something went wrong: An unexpected error occurred in Books::getAllBorrowedBooks. ErrorType: " . $error->getMessage());
+            return null;
+        }
     }
 }

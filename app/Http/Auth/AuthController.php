@@ -40,6 +40,12 @@ class AuthController
                 header('Location: /record_management_system/login'); //redirect to login page if not a user
                 exit;
             } else {
+                $_SESSION['user_data'] = [
+                    'id' => $is_user['id'],
+                    'username' => $is_user['id'],
+                    'user_type' => $is_user['user_type'],
+                    'id' => $is_user['id'],
+                ];
                 if ($is_user['user_type'] === 'admin') {
                     header('Location: /record_management_system/admin/dashboard'); //redirects to admin dashboard
                     exit;
