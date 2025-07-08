@@ -13,6 +13,7 @@ Route::get('/record_management_system/', [PagesController::class, 'renderLanding
 // Authenticate User
 Route::get('/record_management_system/login', [PagesController::class, 'renderLoginPage']);
 Route::post('/record_management_system/login', [AuthController::class, 'login']);
+Route::get('/record_management_system/logout', [AuthController::class, 'logout']);
 
 Route::get('/record_management_system/register', [PagesController::class, 'renderRegisterPage']);
 Route::post('/record_management_system/register', [AuthController::class, 'register']);

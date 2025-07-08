@@ -102,6 +102,25 @@
                 margin-bottom: 10px;
             }
         }
+
+        .top-cont {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .logoutBtn {
+            background-color: red;
+            width: 70px;
+            height: 30px;
+            border-color: red;
+            transition: all 0.6s ease-in-out;
+        }
+
+        .logoutBtn:hover {
+            background-color: gray;
+            transform: translateY(-10%);
+            border: none;
+        }
     </style>
 </head>
 
@@ -109,12 +128,18 @@
 
     <h1>📘 Welcome to Client Dashboard</h1>
 
-    <!-- Search Bar -->
-    <form class="search-bar" method="POST" action="/client/search">
-        <input type="text" name="search" placeholder="Search for books..." required>
-        <button type="submit"><i class="fas fa-search icon"></i>Search</button>
-    </form>
 
+    <div class="top-cont">
+        <!-- Search Bar -->
+        <form class="search-bar" method="POST" action="/client/search">
+            <input type="text" name="search" placeholder="Search for books..." required>
+            <button type="submit"><i class="fas fa-search icon"></i>Search</button>
+        </form>
+
+        <a href="/record_management_system/logout">
+            <button class="logoutBtn" type="submit">Logout</button>
+        </a>
+    </div>
     <!-- Available Books -->
     <div class="dashboard-section">
         <h2><i class="fas fa-book-open icon"></i>Available Books</h2>

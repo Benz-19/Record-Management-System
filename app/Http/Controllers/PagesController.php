@@ -27,13 +27,20 @@ class PagesController
 
     public static function renderAdminDashboard()
     {
+        if ((!isset($_SESSION['user_data']['user_type']) || $_SESSION['user_data']['user_type'] === 'admin') && $_SESSION['is_logged_in'] !== true) {
+            header('Location: /record_management_system/login');
+            exit;
+        }
         $controller = new BaseController();
         $controller->renderView('/admin/dashboard');
     }
 
     public static function renderClientDashboard()
     {
-
+        if ((!isset($_SESSION['user_data']['user_type']) || $_SESSION['user_data']['user_type'] === 'client') && $_SESSION['is_logged_in'] !== true) {
+            header('Location: /record_management_system/login');
+            exit;
+        }
         $bookController = new BookController();
         $books_data = $bookController->retrieveAllBooksData();
         $books = $books_data['books'];
