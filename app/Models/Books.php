@@ -84,11 +84,12 @@ class Books extends DB
     }
 
 
-    public function getAllBorrowedBooks(): ?array
+    public function getAllBorrowedBooks(int $user_id): ?array
     {
         try {
-            $query = "SELECT * FROM borrowed_books ORDER BY borrow_date DESC";
-            $borrowedBook =  $this->fetchAllData($query);
+            $query = "SELECT * FROM borrowed_books WHERE user_id=:u_id ORDER BY borrow_date DESC";
+            $params = [':u_id' => $user_id];
+            $borrowedBook =  $this->fetchAllData($query, $params);
             return $borrowedBook;
         } catch (PDOException $error) {
             error_log("Execution Failure: Database error retrieving all books in Books::getAllBorrowedBooks. ErrorType: " . $error->getMessage());

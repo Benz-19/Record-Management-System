@@ -1,7 +1,9 @@
 <?php
-// echo '<pre>';
-// print_r($borrowed_books[0]['is_returned']);
-// echo '</pre>';
+echo '<pre>';
+print_r($borrowed_books);
+echo '</pre>';
+
+echo 'user_id = ' . $_SESSION['user_data']['id'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -181,17 +183,17 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- <?php if ($rented === 0): ?>
+                <?php if ($rented === false): ?>
                     <tr>
                         <td>
                             <?php echo "You haven't rented any books yet.";
                             ?>
                         </td>
                     </tr>
-                <?php else: ?> -->
-                <?php foreach ($books as $book): ?>
-                    <?php foreach ($borrowed_books as $borrowed_book): ?>
-                        <?php if (array_search($book['id'], $borrowed_books_ids) && ($borrowed_book['is_returned'] === 0) && ($borrowed_book['user_id'] === 2)): ?>
+                <?php else: ?>
+                    <?php while (($number_of_borrowed_books - $index) > 0): ?>
+                        <?php if (array_search($books[$index]['id'], $borrowed_books_ids) ||  (array_search(2, $borrowed_readers_list))): ?>
+                            <!-- <?php echo "the book id = {$book['id']}"; ?> -->
                             <tr>
                                 <td><?= htmlspecialchars($book['title']) ?></td>
                                 <td><?= htmlspecialchars($book['author']) ?></td>
@@ -202,9 +204,10 @@
                                 </td>
                             </tr>
                         <?php endif; ?>
-                    <?php endforeach; ?>
-                <?php endforeach; ?>
-                <!-- <?php endif; ?> -->
+                        <?php echo "index= " . $index; ?>
+                        <?php $index++; ?>
+                    <?php endwhile; ?>
+                <?php endif; ?>
             </tbody>
         </table>
     </div>
