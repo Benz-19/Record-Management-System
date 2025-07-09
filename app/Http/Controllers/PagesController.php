@@ -52,6 +52,7 @@ class PagesController
         $borrowed_books_ids = $books_data['borrowed_books_ids'];
         $borrowed_readers_list = $books_data['borrowed_readers_list'];
         $rented = $books_data['rented'];
+        $unreturned_books_by_client = $books_data['unreturned_books_by_client'];
         require __DIR__ . '/../../../resources/Views/client/dashboard.php';
         // $controller = new BaseController();
         // $controller->renderView('/client/dashboard');

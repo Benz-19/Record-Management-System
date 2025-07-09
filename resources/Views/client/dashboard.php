@@ -1,10 +1,3 @@
-<?php
-echo '<pre>';
-print_r($borrowed_books);
-echo '</pre>';
-
-echo 'user_id = ' . $_SESSION['user_data']['id'];
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -191,22 +184,17 @@ echo 'user_id = ' . $_SESSION['user_data']['id'];
                         </td>
                     </tr>
                 <?php else: ?>
-                    <?php while (($number_of_borrowed_books - $index) > 0): ?>
-                        <?php if (array_search($books[$index]['id'], $borrowed_books_ids) ||  (array_search(2, $borrowed_readers_list))): ?>
-                            <!-- <?php echo "the book id = {$book['id']}"; ?> -->
-                            <tr>
-                                <td><?= htmlspecialchars($book['title']) ?></td>
-                                <td><?= htmlspecialchars($book['author']) ?></td>
-                                <td>
-                                    <form method="POST" action="/client/return/<?= $book['id'] ?>" class="inline">
-                                        <button type="submit" class="btn btn-return"><i class="fas fa-undo icon"></i>Return</button>
-                                    </form>
-                                </td>
-                            </tr>
-                        <?php endif; ?>
-                        <?php echo "index= " . $index; ?>
-                        <?php $index++; ?>
-                    <?php endwhile; ?>
+                    <?php foreach ($unreturned_books_by_client as $unreturned_book): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($unreturned_book['title']) ?></td>
+                            <td><?= htmlspecialchars($unreturned_book['author']) ?></td>
+                            <td>
+                                <form method="POST" action="/client/return/<?php echo $unreturned_book['id']; ?>" class="inline">
+                                    <button type="submit" class="btn btn-return"><i class="fas fa-undo icon"></i>Return</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
                 <?php endif; ?>
             </tbody>
         </table>

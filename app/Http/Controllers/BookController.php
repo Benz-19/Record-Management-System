@@ -22,8 +22,8 @@ class BookController
         $rented = (count($is_returned) > 0) ? true : false;
 
         $borrowed_books_ids = array_column($borrowed_books, 'book_id');
-        rsort($borrowed_books_ids);
-        rsort($borrowed_books);
+
+        $unreturned_books_by_client = $db_books->getUnreturnedBorrowedBooksByUser((int) $user_id);
         $books_data = [
             'counter' => $counter,
             'number_of_books' => $number_of_books,
@@ -31,7 +31,8 @@ class BookController
             'borrowed_books_ids' => $borrowed_books_ids,
             'borrowed_readers_list' => $borrowed_readers_list,
             'borrowed_books' => $borrowed_books,
-            'rented' => $rented
+            'rented' => $rented,
+            'unreturned_books_by_client' => $unreturned_books_by_client
         ];
         return $books_data;
     }

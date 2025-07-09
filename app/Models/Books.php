@@ -99,4 +99,25 @@ class Books extends DB
             return null;
         }
     }
+
+    // returns all the unreturned books by a given user
+    public function getUnreturnedBorrowedBooksByUser(int $user_id): ?array
+    {
+        try {
+            $query = "SELECT
+                        b.id, b.title, b.author, b.published_year, b.genre, b.total_copies, b.available_copies
+                         FROM books AS b
+                         JOIN borrowed_books AS bb ON b.id=bb.book_id
+                         WHERE bb.user_id=:u_id AND bb.is_returned = 0";
+            $params = [':u_id' => $user_id];
+            $borrowedBook =  $this->fetchAllData($query, $params);
+            return $borrowedBook ?: null;
+        } catch (PDOException $error) {
+            error_log("Execution Failure: Database error retrieving all books in Books::getUnreturnedBorrowedBooksByUser. ErrorType: " . $error->getMessage());
+            return null;
+        } catch (Exception $error) {
+            error_log("Something went wrong: An unexpected error occurred in Books::getUnreturnedBorrowedBooksByUser. ErrorType: " . $error->getMessage());
+            return null;
+        }
+    }
 }
