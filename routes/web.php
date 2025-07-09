@@ -21,6 +21,8 @@ Route::post('/record_management_system/register', [AuthController::class, 'regis
 
 // Admin Functionalities
 Route::get('/record_management_system/admin/dashboard', [PagesController::class, 'renderAdminDashboard']);
+Route::get('/record_management_system/admin/add-book', [PagesController::class, 'renderAddNewBookRecord']);
+Route::get('/record_management_system/admin/display-all-books', [PagesController::class, 'displayAllBookRecords']);
 
 
 // Client Functionalities

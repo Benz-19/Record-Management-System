@@ -22,9 +22,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 <td>${book.title}</td>
                 <td>${book.author}</td>
               <td>
-                <form method="POST" action="/client/rent/${book.id}" style="display: inline;">
-                    <button type="submit" class="btn btn-rent">
-                        <i class="fas fa-book-reader icon"></i>Rent
+                <form method="POST" action="/admin/book/update/${book.id}" style="display: inline;">
+                    <button type="submit" class="btn btn-update" style="background-color: green; color: white;">
+                        <i class="fas fa-edit icon"></i>Update
+                    </button>
+                </form>
+
+                <form method="POST" action="/admin/book/delete/${book.id}" style="display: inline;">
+                    <button type="submit" class="btn btn-delete" style="background-color: red; color: white;">
+                        <i class="fas fa-trash icon"></i>Delete
                     </button>
                 </form>
             </td>

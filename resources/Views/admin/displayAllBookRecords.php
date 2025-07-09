@@ -3,8 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Client Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>display All Books</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -103,33 +105,41 @@
             justify-content: space-between;
         }
 
-        .logoutBtn {
-            background-color: red;
-            width: 70px;
-            height: 30px;
-            border-color: red;
+        .dashboardBtn {
+            width: 115px;
+            padding: 10px;
+            font-size: 16px;
+            background-color: blue;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
             transition: all 0.6s ease-in-out;
         }
 
-        .logoutBtn:hover {
+        .dashboardBtn:hover {
             background-color: gray;
             transform: translateY(-10%);
             border: none;
+        }
+
+        #no-results {
+            display: none;
+            color: red;
+            margin-top: 10px;
+            text-align: center;
         }
     </style>
 </head>
 
 <body>
-
-    <h1>📘 Welcome to Client Dashboard</h1>
-
     <div class="top-cont">
         <div class="search-bar">
-            <input type="text" id="searchInput" placeholder="Search for books...">
+            <input type="text" id="searchInput" placeholder="Search for books by ID or name...">
         </div>
 
-        <a href="/record_management_system/logout">
-            <button class="logoutBtn" type="submit">Logout</button>
+        <a href="/record_management_system/admin/dashboard">
+            <button class="dashboardBtn" type="submit">Dashboard</button>
         </a>
     </div>
 
@@ -139,6 +149,7 @@
         <table>
             <thead>
                 <tr>
+                    <th>ID</th>
                     <th>Title</th>
                     <th>Author</th>
                     <th>Action</th>
@@ -148,42 +159,10 @@
                 <!-- Books will be injected here by JS -->
             </tbody>
         </table>
+        <p id="no-results">ID, Title or Author does not exist.</p>
     </div>
-
-    <!-- Rented Books -->
-    <div class="dashboard-section">
-        <h2><i class="fas fa-box icon"></i>Your Rented Books</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Author</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php if ($rented === false): ?>
-                    <tr>
-                        <td colspan="3">You haven't rented any books yet.</td>
-                    </tr>
-                <?php else: ?>
-                    <?php foreach ($unreturned_books_by_client as $unreturned_book): ?>
-                        <tr>
-                            <td><?= htmlspecialchars($unreturned_book['title']) ?></td>
-                            <td><?= htmlspecialchars($unreturned_book['author']) ?></td>
-                            <td>
-                                <form method="POST" action="/client/return/<?= $unreturned_book['id']; ?>" class="inline">
-                                    <button type="submit" class="btn btn-return"><i class="fas fa-undo icon"></i>Return</button>
-                                </form>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                <?php endif; ?>
-            </tbody>
-        </table>
-    </div>
-
-    <script src="/record_management_system/public/js/cli_dshbrd.js"></script>
 </body>
+
+<script src="/record_management_system/public/js/adm_render_books.js"></script>
 
 </html>

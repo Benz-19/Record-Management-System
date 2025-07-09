@@ -37,6 +37,26 @@ class PagesController
         $controller->renderView('/admin/dashboard');
     }
 
+    public function renderAddNewBookRecord()
+    {
+        if ((!isset($_SESSION['user_data']['user_type']) || $_SESSION['user_data']['user_type'] === 'admin') && $_SESSION['is_logged_in'] !== true) {
+            header('Location: /record_management_system/login');
+            exit;
+        }
+        $controller = new BaseController();
+        $controller->renderView('/admin/addNewBookRecord');
+    }
+
+    public function displayAllBookRecords()
+    {
+        if ((!isset($_SESSION['user_data']['user_type']) || $_SESSION['user_data']['user_type'] === 'admin') && $_SESSION['is_logged_in'] !== true) {
+            header('Location: /record_management_system/login');
+            exit;
+        }
+        $controller = new BaseController();
+        $controller->renderView('/admin/displayAllBookRecords');
+    }
+
     public static function renderClientDashboard()
     {
         if ((!isset($_SESSION['user_data']['user_type']) || $_SESSION['user_data']['user_type'] === 'client') && $_SESSION['is_logged_in'] !== true) {
@@ -55,8 +75,6 @@ class PagesController
         $borrowed_readers_list = $books_data['borrowed_readers_list'];
         $rented = $books_data['rented'];
         $unreturned_books_by_client = $books_data['unreturned_books_by_client'];
-        require __DIR__ . '/../../../resources/Views/client/dashboard.php';
-        // $controller = new BaseController();
-        // $controller->renderView('/client/dashboard');
+        require __DIR__ . '/../../../../resources/Views/client/dashboard.php';
     }
 }
