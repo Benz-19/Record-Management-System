@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add New Book Record</title>
-
+    <link rel="stylesheet" href="/record_management_system/public/css/layout.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -110,7 +110,16 @@
 
     <div class="container">
         <h2>Add New Book Record</h2>
-        <form action="processAddBook.php" method="POST">
+        <form action="/record_management_system/admin/process-add-book" method="POST">
+            <div class="message">
+                <?php if (isset($_SESSION['error'])): ?>
+                    <p class="error"><?php echo $_SESSION['error']; ?></p>
+                    <?php unset($_SESSION['error']); ?>
+                <?php elseif (isset($_SESSION['success'])): ?>
+                    <p class="success"><?php echo $_SESSION['success']; ?></p>
+                    <?php unset($_SESSION['success']); ?>
+                <?php endif; ?>
+            </div>
             <label for="title">Book Title</label>
             <input type="text" id="title" name="title" required>
 
@@ -129,10 +138,12 @@
             <label for="available">Available Copies</label>
             <input type="number" id="available" name="available_copies" min="0" required>
 
-            <button type="submit">Submit Book Record</button>
+            <button type="submit" name="addNewRecord">Submit Book Record</button>
         </form>
     </div>
 
+    <!-- JS -->
+    <script src="/record_management_system/public/js/layout.js"></script>
 </body>
 
 </html>

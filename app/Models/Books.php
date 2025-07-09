@@ -71,7 +71,7 @@ class Books extends DB
     public function getAllBooks(): ?array
     {
         try {
-            $query = "SELECT * FROM books ORDER BY created_at DESC";
+            $query = "SELECT * FROM books ORDER BY created_at ASC";
             $singleBook =  $this->fetchAllData($query);
             return $singleBook;
         } catch (PDOException $error) {

@@ -3,6 +3,7 @@
 use CustomRouter\Route;
 use App\Core\BaseController;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Book\BookController;
 use App\Http\Controllers\Pages\PagesController;
 
 
@@ -23,6 +24,7 @@ Route::post('/record_management_system/register', [AuthController::class, 'regis
 Route::get('/record_management_system/admin/dashboard', [PagesController::class, 'renderAdminDashboard']);
 Route::get('/record_management_system/admin/add-book', [PagesController::class, 'renderAddNewBookRecord']);
 Route::get('/record_management_system/admin/display-all-books', [PagesController::class, 'displayAllBookRecords']);
+Route::post('/record_management_system/admin/process-add-book', [BookController::class, 'addRecord']);
 
 
 // Client Functionalities
