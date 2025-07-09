@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Pages;
 
 use App\Core\BaseController;
+use App\Http\Controllers\Book\BookController;
+
 
 class PagesController
 {

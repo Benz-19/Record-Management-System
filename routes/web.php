@@ -2,9 +2,9 @@
 
 use CustomRouter\Route;
 use App\Core\BaseController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\PagesController;
-use App\Http\Auth\AuthController;
+use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Pages\PagesController;
+
 
 require __DIR__ . '/../vendor/autoload.php';
 
