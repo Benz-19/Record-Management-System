@@ -100,7 +100,7 @@
 <body>
     <header>
         <div>
-            <h1>📚 Admin Dashboard</h1>
+            <h1>📚 Add New Record</h1>
             <p>Manage your library system</p>
         </div>
         <a href="/record_management_system/admin/dashboard">

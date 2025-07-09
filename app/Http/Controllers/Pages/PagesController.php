@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Pages;
 
 use App\Core\BaseController;
 use App\Http\Controllers\Book\BookController;
+use App\Http\Controllers\Users\UserController;
 
 
 class PagesController
@@ -35,6 +36,19 @@ class PagesController
         }
         $controller = new BaseController();
         $controller->renderView('/admin/dashboard');
+    }
+
+    public static function renderViewUsers()
+    {
+        if ((!isset($_SESSION['user_data']['user_type']) || $_SESSION['user_data']['user_type'] === 'admin') && $_SESSION['is_logged_in'] !== true) {
+            header('Location: /record_management_system/login');
+            exit;
+        }
+        $userController = new UserController();
+        $users = $userController->renderAllUsers();
+
+        require __DIR__ . '/../../../../resources/Views/admin/displayUsers.php';
+        exit;
     }
 
     public function renderAddNewBookRecord()

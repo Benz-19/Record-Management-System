@@ -168,7 +168,7 @@
                 <div class="text">
                     <h2>View All Clients</h2>
                     <p>See all registered users</p>
-                    <a href="/admin/clients"><button>View Clients</button></a>
+                    <a href="/record_management_system/admin/view-users"><button>View Clients</button></a>
                 </div>
             </div>
         </div>

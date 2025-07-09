@@ -40,6 +40,26 @@ class User
         return null;
     }
 
+    public function getAllUser()
+    {
+        $db = new DB();
+        try {
+            $query = "SELECT id, username, email, user_type FROM users";
+
+            $all_user_credentials = $db->fetchAllData($query);
+
+            return $all_user_credentials ?: null; //returns the user data
+        } catch (PDOException $error) {
+            error_log('Failed to get All User Credentials. ErrorType: ' . $error->getMessage());
+            return null;
+        } catch (Exception $error) {
+            error_log('Something went wrong at User::getAllUser. ErrorType: ' . $error->getMessage());
+            return null;
+        }
+
+        return null;
+    }
+
     public function getUserCredentials(string $email)
     {
         $db = new DB();
