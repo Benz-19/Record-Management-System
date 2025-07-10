@@ -6,6 +6,8 @@ To get my custom router, run:
 ```sh
 composer require ukingsley/customrouter
 ```
+## Landing Page
+  - ![Dashboard](https://raw.githubusercontent.com/Benz-19/Record-Management-System/main/screenshots/admin-dashboard.png)
 
 ## Features
 
