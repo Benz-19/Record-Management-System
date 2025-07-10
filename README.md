@@ -7,7 +7,7 @@ To get my custom router, run:
 composer require ukingsley/customrouter
 ```
 ## Landing Page
-  - ![Dashboard](https://raw.githubusercontent.com/Benz-19/Record-Management-System/main/screenshots/admin-dashboard.png)
+  - ![Dashboard](https://raw.githubusercontent.com/Benz-19/Record-Management-System/main/screenshots/landing.png)
 
 ## Features
 
