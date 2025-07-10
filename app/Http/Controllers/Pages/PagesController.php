@@ -61,6 +61,27 @@ class PagesController
         $controller->renderView('/admin/addNewBookRecord');
     }
 
+    public function renderUpdateRecord()
+    {
+        if ((!isset($_SESSION['user_data']['user_type']) || $_SESSION['user_data']['user_type'] === 'admin') && $_SESSION['is_logged_in'] !== true) {
+            header('Location: /record_management_system/login');
+            exit;
+        }
+
+        $book_id = $_GET['id'] ?? null;
+        if (!$book_id) {
+            echo "No book ID provided.";
+            exit;
+        }
+
+        $controller = new BookController();
+        $books_id = htmlspecialchars(trim($book_id));
+        $book_data = $controller->retrieveSingleBooksData($book_id);
+        require __DIR__ . '/../../../../resources/Views/admin/updateBookRecord.php';
+        exit;
+    }
+
+
     public function displayAllBookRecords()
     {
         if ((!isset($_SESSION['user_data']['user_type']) || $_SESSION['user_data']['user_type'] === 'admin') && $_SESSION['is_logged_in'] !== true) {

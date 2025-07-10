@@ -116,6 +116,13 @@
             transform: translateY(-10%);
             border: none;
         }
+
+        #no-results {
+            display: none;
+            color: red;
+            margin-top: 10px;
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -125,7 +132,7 @@
 
     <div class="top-cont">
         <div class="search-bar">
-            <input type="text" id="searchInput" placeholder="Search for books...">
+            <input type="text" id="searchInput" placeholder="Search for books by ID or name...">
         </div>
 
         <a href="/record_management_system/logout">
@@ -148,6 +155,7 @@
                 <!-- Books will be injected here by JS -->
             </tbody>
         </table>
+        <p id="no-results">ID, Title or Author does not exist.</p>
     </div>
 
     <!-- Rented Books -->

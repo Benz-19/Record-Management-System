@@ -22,13 +22,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 <td>${book.title}</td>
                 <td>${book.author}</td>
               <td>
-                <form method="POST" action="/admin/book/update/${book.id}" style="display: inline;">
+                <form method="GET" action="/record_management_system/admin/process-update-book" style="display: inline;">
+                    <input type="hidden" name="id" value="${book.id}">
                     <button type="submit" class="btn btn-update" style="background-color: green; color: white;">
                         <i class="fas fa-edit icon"></i>Update
                     </button>
                 </form>
 
-                <form method="POST" action="/admin/book/delete/${book.id}" style="display: inline;">
+                <form method="POST" action="/record_management_system/admin/process-delete-book?id=${book.id}" style="display: inline;">
                     <button type="submit" class="btn btn-delete" style="background-color: red; color: white;">
                         <i class="fas fa-trash icon"></i>Delete
                     </button>

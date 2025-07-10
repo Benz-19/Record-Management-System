@@ -40,6 +40,22 @@ class BookController
         }
     }
 
+    public function retrieveSingleBooksData(int $book_id): ?array
+    {
+        $book = new Books();
+
+        try {
+            $data = $book->getBookById($book_id);
+            return $data;
+        } catch (PDOException $e) {
+            error_log('Database Error. Failed to add a new record at BookController::addRecord. ErrorType: ' . $e->getMessage());
+            return null;
+        } catch (Exception $e) {
+            error_log('Something went wrong at BookController::addRecord. ErrorType: ' . $e->getMessage());
+            return null;
+        }
+    }
+
     public function retrieveAllBooksData()
     {
         $user_id = htmlspecialchars($_SESSION['user_data']['id']);
