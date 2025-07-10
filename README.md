@@ -14,7 +14,6 @@ composer require ukingsley/customrouter
 - **Admin Dashboard:**
   - Add, update, and delete book records.
     - ![create post](screenshots/create-post.png)
-    - ![update and delete books](screenshots/view-update-delete.png)
   - View all available books.
     - ![view books](screenshots/view-update-delete.png)
   - View all registered users.
