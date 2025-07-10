@@ -9,36 +9,48 @@ To get my custom router, run
 
 - **User Authentication:** Register, login, and logout for clients and admins.
 - **Admin Dashboard:**
+    ![admin dashboard](screenshots/admin-dashboard.png)
   - Add, update, and delete book records.
+    ![create post](screenshots/create-post.png)
+  - Add, update, and delete book records.
+    ![update and delete books](screenshots/view-update-delete.png)
   - View all available books.
+    ![view books](screenshots/view-update-delete.png)
   - View all registered users.
+    ![view users](screenshots/view-users.png)
 - **Client Dashboard:**
+    ![view users](screenshots/view-users.png)
   - Browse and search available books.
-  - Rent and return books.
+    ![view users](screenshots/search-book.png)
+  - Displays a message when a book's ID, Author, Title isn't found.
+    ![view users](screenshots/failed-search.png)
   - View rented and unreturned books.
 - **RESTful API:** Provides book data for dynamic front-end rendering.
+    ```sh
+    visit public/js/cli-dshbrd.js
+    ```
 - **Responsive UI:** Clean, modern interface with mobile support.
 
 ## Project Structure
 
-```
-app/
-  Core/
-  Helper/
-  Http/
-  Models/
-  Services/
-config/
-migrations/
-public/
-resources/
-  Views/
-routes/
-src/
-vendor/
-index.php
-bootstrap.php
-composer.json
+```sh
+    app/
+    Core/
+    Helper/
+    Http/
+    Models/
+    Services/
+    config/
+    migrations/
+    public/
+    resources/
+    Views/
+    routes/
+    src/
+    vendor/
+    index.php
+    bootstrap.php
+    composer.json
 ```
 
 ## Setup Instructions
