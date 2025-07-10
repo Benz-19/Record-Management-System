@@ -9,7 +9,7 @@ To get my custom router, run
 
 - **User Authentication:** Register, login, and logout for clients and admins.
 - **Admin Dashboard:**
-![admin dashboard](https://raw.githubusercontent.com/Benz-19/Record-Management-System/main/screenshots/admin-dashboard.png)
+![admin dashboard](https://github.com/Benz-19/Record-Management-System/screenshots/admin-dashboard.png)
   - Add, update, and delete book records.
     ![create post](screenshots/create-post.png)
   - Add, update, and delete book records.
