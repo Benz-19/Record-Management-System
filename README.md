@@ -1,15 +1,16 @@
 # Record Management System (UK RMS)
 
-A web-based Library Record Management System for organizing, tracking, and managing books and users. Built with PHP, MySQL, and a custom router (created by me), this system supports both admin and client functionalities.
-To get my custom router, run
-   ```sh
-   composer require ukingsley/customrouter
-    ```
+A web-based Library Record Management System for organizing, tracking, and managing books and users. Built with **PHP**, **MySQL**, and a **custom router** (developed by me), this system supports both admin and client functionalities.
+
+To get my custom router, run:
+```sh
+composer require ukingsley/customrouter
+
 ## Features
 
-![Dashboard](https://raw.githubusercontent.com/Benz-19/Record-Management-System/main/screenshots/admin-dashboard.png)
 - **User Authentication:** Register, login, and logout for clients and admins.
 - **Admin Dashboard:**
+![Dashboard](https://raw.githubusercontent.com/Benz-19/Record-Management-System/main/screenshots/admin-dashboard.png)
   - Add, update, and delete book records.
     ![create post](screenshots/create-post.png)
   - Add, update, and delete book records.
