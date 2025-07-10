@@ -124,6 +124,7 @@
                     <?php unset($_SESSION['success']); ?>
                 <?php endif; ?>
             </div>
+            <input type="hidden" id="id" name="id" value="<?php echo $book_data['id']; ?>" required>
             <label for="title">Book Title</label>
             <input type="text" id="title" name="title" value="<?php echo $book_data['title']; ?>" required>
 

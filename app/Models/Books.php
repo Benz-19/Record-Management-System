@@ -32,7 +32,7 @@ class Books extends DB
                 WHERE id=:id";
                 break;
             case 'delete':
-                $query = "DELETE * FROM books WHERE id=:id";
+                $query = "DELETE FROM books WHERE id=:id";
                 break;
 
             default:

@@ -26,9 +26,9 @@ Route::get('/record_management_system/admin/add-book', [PagesController::class, 
 Route::get('/record_management_system/admin/display-all-books', [PagesController::class, 'displayAllBookRecords']);
 Route::get('/record_management_system/admin/view-users', [PagesController::class, 'renderViewUsers']);
 Route::post('/record_management_system/admin/process-add-book', [BookController::class, 'addRecord']);
-Route::get('/record_management_system/admin/process-update-book', [PagesController::class, 'renderUpdateRecord']);
+Route::get('/record_management_system/admin/update-book', [PagesController::class, 'renderUpdateRecord']);
 Route::post('/record_management_system/admin/process-update-book', [BookController::class, 'updateRecord']);
-Route::get('/record_management_system/admin/process-delete-book', [BookController::class, 'deleteRecord']);
+Route::post('/record_management_system/admin/process-delete-book', [BookController::class, 'deleteRecord']);
 
 
 // Client Functionalities

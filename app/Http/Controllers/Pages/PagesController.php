@@ -70,7 +70,7 @@ class PagesController
 
         $book_id = $_GET['id'] ?? null;
         if (!$book_id) {
-            echo "No book ID provided.";
+            require __DIR__ . '/../../../../resources/Views/admin/dashboard.php';
             exit;
         }
 

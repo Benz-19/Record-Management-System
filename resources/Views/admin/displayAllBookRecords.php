@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>display All Books</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="/record_management_system/public/css/layout.css">
 
     <style>
         body {
@@ -129,6 +130,10 @@
             margin-top: 10px;
             text-align: center;
         }
+
+        .message {
+            margin: 20px 300px;
+        }
     </style>
 </head>
 
@@ -161,8 +166,20 @@
         </table>
         <p id="no-results">ID, Title or Author does not exist.</p>
     </div>
-</body>
 
-<script src="/record_management_system/public/js/adm_render_books.js"></script>
+    <div class="message">
+        <?php if (isset($_SESSION['error'])): ?>
+            <p class="error"><?php echo $_SESSION['error']; ?></p>
+            <?php unset($_SESSION['error']); ?>
+        <?php elseif (isset($_SESSION['success'])): ?>
+            <p class="success"><?php echo $_SESSION['success']; ?></p>
+            <?php unset($_SESSION['success']); ?>
+        <?php endif; ?>
+    </div>
+
+    <!-- JS -->
+    <script src="/record_management_system/public/js/layout.js"></script>
+    <script src="/record_management_system/public/js/adm_render_books.js"></script>
+</body>
 
 </html>

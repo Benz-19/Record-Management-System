@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
         integrity="sha512-oBwB0QXYK0KXGp8bgoW8KQfZCrsAIbnl9LtKeNMX7GnW1lV7bJUEEvdjZ05cHEhhEkYkYtUez6Wy5YUM3UwXDQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <link rel="stylesheet" href="/record_management_system/public/css/layout.css">
     <style>
         * {
             box-sizing: border-box;
@@ -123,6 +123,10 @@
             transform: translateY(-10%);
             border: none;
         }
+
+        .message {
+            margin: 20px 300px;
+        }
     </style>
 </head>
 
@@ -175,6 +179,18 @@
 
     </section>
 
+    <div class="message">
+        <?php if (isset($_SESSION['error'])): ?>
+            <p class="error"><?php echo $_SESSION['error']; ?></p>
+            <?php unset($_SESSION['error']); ?>
+        <?php elseif (isset($_SESSION['success'])): ?>
+            <p class="success"><?php echo $_SESSION['success']; ?></p>
+            <?php unset($_SESSION['success']); ?>
+        <?php endif; ?>
+    </div>
+
+    <!-- JS -->
+    <script src="/record_management_system/public/js/layout.js"></script>
 </body>
 
 </html>
